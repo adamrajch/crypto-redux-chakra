@@ -3,7 +3,7 @@ import Head from "next/head";
 import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import { Chakra } from "../../styles/chakra";
-import "../../styles/global.css";
+// import "../../styles/global.css";
 import store from "../app/store";
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
