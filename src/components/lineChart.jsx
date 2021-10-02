@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Line } from "react-chartjs-2";
 import {
-  Box,
   Flex,
   Text,
   Heading,
@@ -37,6 +37,8 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
   };
 
   const options = {
+    maintainAspectRatio: false,
+    responsive: true,
     scales: {
       yAxes: [
         {
@@ -49,14 +51,14 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
   };
 
   return (
-    <Box w="100%">
+    <Flex flexDir="column" maxH="65vh" mb={6}>
       <Flex
         justify="space-between"
         align="center"
         w="100%"
         color={mode("black", "white")}
       >
-        <Heading>{coinName} Price Chart </Heading>
+        <Heading size={["sm", "md"]}>{coinName} Price Chart </Heading>
         <Flex>
           <Text mx={2}>Change: {coinHistory?.data?.change}%</Text>
           <Text>
@@ -65,7 +67,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         </Flex>
       </Flex>
       <Line data={data} options={options} />
-    </Box>
+    </Flex>
   );
 };
 

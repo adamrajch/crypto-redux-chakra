@@ -76,11 +76,19 @@ export default function Crypto(props) {
   ];
 
   return (
-    <>
-      <Heading textAlign="center" color={mode("black", "white")}>
+    <Box height="100%">
+      <Heading
+        textAlign="center"
+        color={mode("black", "white")}
+        fontSize={["xl", "3xl"]}
+      >
         {coin.name} ({coin.slug})
       </Heading>
-      <Text textAlign="center" color={mode("black", "white")}>
+      <Text
+        textAlign="center"
+        color={mode("black", "white")}
+        fontSize={["sm", "lg"]}
+      >
         {cryptoDetails.name} live price in US Dollar (USD). View value
         statistics, market cap and supply.
       </Text>
@@ -149,43 +157,42 @@ export default function Crypto(props) {
         </Container>
       </Flex>
 
-      <Container color={mode("black", "white")} maxW="4xl">
-        <Heading textAlign="center" size="lg">
-          Details
-        </Heading>
-        {HTMLReactParser(cryptoDetails.description)}
-      </Container>
-      <Container
-        // bg={mode("white", "gray.700")}
-        rounded="8px"
-        shadow="base"
-        color={mode("gray.500", "gray.400")}
-        p="4"
-        maxW="md"
-        my={2}
-      >
-        <Heading textAlign="center" color={mode("black", "white")}>
-          Links
-        </Heading>
+      <Flex flexDir={["column", "row"]}>
+        <Container color={mode("black", "white")} maxW="2xl">
+          <Heading textAlign="center" size="lg">
+            Details
+          </Heading>
+          {HTMLReactParser(cryptoDetails.description)}
+        </Container>
+        <Container
+          // bg={mode("white", "gray.700")
+          color={mode("gray.500", "gray.400")}
+          maxW="md"
+          my={2}
+        >
+          <Heading textAlign="center" size="lg" color={mode("black", "white")}>
+            Links
+          </Heading>
 
-        {cryptoDetails.links?.map((link) => (
-          <Box py={2} key={link.name}>
-            <Flex justify="space-between" mb={1}>
-              <Text>{link.type}</Text>
-              <Text
-                as="a"
-                href={link.url}
-                target="_blank"
-                rel="noreferrer"
-                color={mode("black", "white")}
-              >
-                {link.name}
-              </Text>
-            </Flex>
-            <Divider />
-          </Box>
-        ))}
-      </Container>
-    </>
+          {cryptoDetails.links?.map((link) => (
+            <Box py={[0, 2]} key={link.name}>
+              <Flex justify="space-between" mb={1}>
+                <Text>{link.type}</Text>
+                <Text
+                  as="a"
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  color={mode("black", "white")}
+                >
+                  {link.name}
+                </Text>
+              </Flex>
+              <Divider />
+            </Box>
+          ))}
+        </Container>
+      </Flex>
+    </Box>
   );
 }
